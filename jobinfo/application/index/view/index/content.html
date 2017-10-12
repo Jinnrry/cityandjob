@@ -53,8 +53,8 @@
                 <p class="detailinfo">
                     最高工资：  平均值：<span class="red"> {$job[0]['avgmax']} </span>     标准差：<span class="red">{$job[0]['stdmax']} </span>  <br>
                     最低工资：  平均值： <span class="red"> {$job[0]['avgmin']}  </span>   标准差：<span class="red">{$job[0]['stdmin']}</span><br>
-                    该地区平均二手房交易价格：<span class="red">{$room[0]['price']}</span>  元/平米<br>
-                    月工资购房面积：<span class="red">{php} echo ( $job[0]['avgmax'] +  $job[0]['avgmin']) /2 / $room[0]['price']    {/php}</span> 平方米 <br>
+                    该地区平均二手房交易价格：<span class="red">{php} if(empty($room[0]['price']))  echo '暂无数据'; else  echo $room[0]['price'] {/php}</span>  元/平米<br>
+                    月工资购房面积：<span class="red">{php} if(empty($room[0]['price']))  echo '暂无数据'; else  echo ( $job[0]['avgmax'] +  $job[0]['avgmin']) /2 / $room[0]['price']    {/php}</span> 平方米 <br>
 
                 </p>
 
