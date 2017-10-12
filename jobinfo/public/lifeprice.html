@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>各城市工作分析</title>
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/canvas-particle.js"></script>
+    <script src="static/js/jquery.autocompleter.js"></script>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/index.css" type="text/css">
+    <link rel="stylesheet" href="static/css/jquery.autocompleter.css" type="text/css">
+
+
+    <style>
+        a{ text-decoration:none ;color: #FFFFFF; }
+        a:hover{ text-decoration:none ;color: #FFFFFF; }
+    </style>
+
+</head>
+<body>
+<div class="header">
+    <div class="header-right"> <a href="index.php"> <img src="static/img/home.png" width="30px;"> HOME </a>  </div>
+
+    <div class="header-left">
+
+        <table >
+            <tr>
+                <td><a href="dowload.html"><span class="glyphicon glyphicon-cloud"></span>下载数据</a>  </td>
+                <td><a href="https://github.com/jiangwei1995910/cityandjob"><span class="glyphicon glyphicon-font"></span>项目源码</a></td>
+                <td><a href="about.html"><span class="glyphicon glyphicon-list-alt"></span>关于数据</a></td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<div class="container">
+
+    <!-- 背景div -->
+    <div id="mydiv" style="height:550px;">
+
+        <div class="content-noheight">
+            <h3 align="center"> 2016年人均消费水平数据 </h3>
+            <table width="467" class="table table-bordered text-center table-striped">
+                <tbody>
+                <tr>
+                    <td width="102">省份</td>
+                    <td width="126">零售总额（亿元）</td>
+                    <td width="113">人口（万）</td>
+                    <td width="126">人均消费（元/年）</td>
+                </tr>
+                <tr>
+                    <td width="102">广东</td>
+                    <td width="126">34739</td>
+                    <td width="113">10849</td>
+                    <td width="126">32020</td>
+                </tr>
+                <tr>
+                    <td width="102">山东</td>
+                    <td width="126">30645.8</td>
+                    <td width="113">9847.16</td>
+                    <td width="126">31121</td>
+                </tr>
+                <tr>
+                    <td width="102">江苏</td>
+                    <td width="126">28707.12</td>
+                    <td width="113">7976.3</td>
+                    <td width="126">35590</td>
+                </tr>
+                <tr>
+                    <td width="102">浙江</td>
+                    <td width="126">21971</td>
+                    <td width="113">5539</td>
+                    <td width="126">39666</td>
+                </tr>
+                <tr>
+                    <td width="102">河南</td>
+                    <td width="126">17618.35</td>
+                    <td width="113">9480</td>
+                    <td width="126">18585</td>
+                </tr>
+                <tr>
+                    <td width="102">湖北</td>
+                    <td width="126">15649.22</td>
+                    <td width="113">5851.5</td>
+                    <td width="126">26744</td>
+                </tr>
+                <tr>
+                    <td width="102">四川</td>
+                    <td width="126">15501.9</td>
+                    <td width="113">8204</td>
+                    <td width="126">18896</td>
+                </tr>
+                <tr>
+                    <td width="102">河北</td>
+                    <td width="126">14364.7</td>
+                    <td width="113">7424.92</td>
+                    <td width="126">19346</td>
+                </tr>
+                <tr>
+                    <td width="102">湖南</td>
+                    <td width="126">13436.53</td>
+                    <td width="113">6783</td>
+                    <td width="126">19809</td>
+                </tr>
+                <tr>
+                    <td width="102">辽宁</td>
+                    <td width="126">13400</td>
+                    <td width="113">30576</td>
+                    <td width="126"></td>
+                </tr>
+                <tr>
+                    <td width="102">福建</td>
+                    <td width="126">11674.54</td>
+                    <td width="113">3839</td>
+                    <td width="126">30410</td>
+                </tr>
+                <tr>
+                    <td width="102">北京</td>
+                    <td width="126">11005.1</td>
+                    <td width="113">2170.5</td>
+                    <td width="126">50703</td>
+                </tr>
+                <tr>
+                    <td width="102">上海</td>
+                    <td width="126">10946.57</td>
+                    <td width="113">2415.27</td>
+                    <td width="126">45322</td>
+                </tr>
+                <tr>
+                    <td width="102">安徽</td>
+                    <td width="126">10000.2</td>
+                    <td width="113">6143.6</td>
+                    <td width="126">16277</td>
+                </tr>
+                <tr>
+                    <td width="102">吉林</td>
+                    <td width="126">7310.42</td>
+                    <td width="113">2753.3</td>
+                    <td width="126">26551</td>
+                </tr>
+                <tr>
+                    <td width="102">陕西</td>
+                    <td width="126">7302.57</td>
+                    <td width="113">3792.87</td>
+                    <td width="126">19253</td>
+                </tr>
+                <tr>
+                    <td width="102">重庆</td>
+                    <td width="126">7271.35</td>
+                    <td width="113">3016.55</td>
+                    <td width="126">24105</td>
+                </tr>
+                <tr>
+                    <td width="102">广西</td>
+                    <td width="126">7027.31</td>
+                    <td width="113">5518</td>
+                    <td width="126">12735</td>
+                </tr>
+                <tr>
+                    <td width="102">内蒙古</td>
+                    <td width="126">6700.8</td>
+                    <td width="113">2511.04</td>
+                    <td width="126">26686</td>
+                </tr>
+                <tr>
+                    <td width="102">江西</td>
+                    <td width="126">6634.6</td>
+                    <td width="113">4565.6</td>
+                    <td width="126">14532</td>
+                </tr>
+                <tr>
+                    <td width="102">山西</td>
+                    <td width="126">6480.5</td>
+                    <td width="113">3664</td>
+                    <td width="126">17687</td>
+                </tr>
+                <tr>
+                    <td width="102">云南</td>
+                    <td width="126">5722.9</td>
+                    <td width="113">4741.8</td>
+                    <td width="126">12069</td>
+                </tr>
+                <tr>
+                    <td width="102">天津</td>
+                    <td width="126">5635.81</td>
+                    <td width="113">1546.95</td>
+                    <td width="126">36432</td>
+                </tr>
+                <tr>
+                    <td width="102">贵州</td>
+                    <td width="126">3708.99</td>
+                    <td width="113">3529.5</td>
+                    <td width="126">10509</td>
+                </tr>
+                <tr>
+                    <td width="102">甘肃</td>
+                    <td width="126">3184.39</td>
+                    <td width="113">2599.55</td>
+                    <td width="126">12248</td>
+                </tr>
+                <tr>
+                    <td width="102">新疆</td>
+                    <td width="126">2825.9</td>
+                    <td width="113">2360</td>
+                    <td width="126">11975</td>
+                </tr>
+                <tr>
+                    <td width="102">海南</td>
+                    <td width="126">1453.72</td>
+                    <td width="113">910.82</td>
+                    <td width="126">15961</td>
+                </tr>
+                <tr>
+                    <td width="102">宁夏</td>
+                    <td width="126">850.1</td>
+                    <td width="113">667.88</td>
+                    <td width="126">12728</td>
+                </tr>
+                <tr>
+                    <td width="102">青海</td>
+                    <td width="126">767.3</td>
+                    <td width="113">588.43</td>
+                    <td width="126">13040</td>
+                </tr>
+                <tr>
+                    <td width="102">西藏</td>
+                    <td width="126">457</td>
+                    <td width="113">323.97</td>
+                    <td width="126">14106</td>
+                </tr>
+                <tr>
+                    <td width="102">全国</td>
+                    <td width="126">332316.3</td>
+                    <td width="113">137462</td>
+                    <td width="126">24175</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,	//小球x轴速度,正为右，负为左
+                vy: 4,	//小球y轴速度
+                height: 2,	//小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,		//点个数
+                color: "121, 162, 185", 	//点颜色
+                stroke: "130,255,255", 		//线条颜色
+                dist: 6000, 	//点吸附距离
+                e_dist: 20000, 	//鼠标吸附加速距离
+                max_conn: 10 	//点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+
+
+        $("#mydiv").height((    $(window).height() -50 )    );
+
+    </script>
+
+
+
+</div>
+</body>
+</html>

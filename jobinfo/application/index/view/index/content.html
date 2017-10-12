@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>各城市工作分析</title>
+    <script src="__STATIC__/js/jquery-3.2.1.min.js"></script>
+    <script src="__STATIC__/js/bootstrap.min.js"></script>
+    <script src="__STATIC__/js/canvas-particle.js"></script>
+    <script src="__STATIC__/js/jquery.autocompleter.js"></script>
+    <link rel="stylesheet" href="__STATIC__/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="__STATIC__/css/index.css" type="text/css">
+    <link rel="stylesheet" href="__STATIC__/css/jquery.autocompleter.css" type="text/css">
+
+
+    <style>
+        a{ text-decoration:none ;color: #FFFFFF; }
+        a:hover{ text-decoration:none ;color: #FFFFFF; }
+    </style>
+
+</head>
+<body>
+<div class="header">
+    <div class="header-right"> <a href="index"> <img src="__STATIC__/img/home.png" width="30px;"> HOME </a>  </div>
+
+    <div class="header-left">
+
+        <table >
+            <tr>
+                <td><a href="__STATIC__/../dowload.html"><span class="glyphicon glyphicon-cloud"></span>下载数据</a>  </td>
+                <td><a href="https://github.com/jiangwei1995910/cityandjob"><span class="glyphicon glyphicon-font"></span>项目源码</a></td>
+                <td><a href="__STATIC__/../about.html"><span class="glyphicon glyphicon-list-alt"></span>关于数据</a></td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+<div class="container">
+
+    <!-- 背景div -->
+    <div id="mydiv" style="height:550px;">
+
+        <div class="content">
+            <div class="title">查询结果</div>
+            <hr>
+            <p>
+                在 <span class="red">{$city}</span>  地区，<span class="red">{$post}</span>相关工作的情况如下（基于前程无忧的 <span class="red">{$job[0]['num']}</span> 条招聘数据 ）：<br>
+                <p class="detailinfo">
+                    最高工资：  平均值：<span class="red"> {$job[0]['avgmax']} </span>     标准差：<span class="red">{$job[0]['stdmax']} </span>  <br>
+                    最低工资：  平均值： <span class="red"> {$job[0]['avgmin']}  </span>   标准差：<span class="red">{$job[0]['stdmin']}</span><br>
+                    该地区平均二手房交易价格：<span class="red">{$room[0]['price']}</span>  元/平米<br>
+                    月工资购房面积：<span class="red">{php} echo ( $job[0]['avgmax'] +  $job[0]['avgmin']) /2 / $room[0]['price']    {/php}</span> 平方米 <br>
+
+                </p>
+
+            <p>名称解释：<br>
+<p class="detailinfo">                最高工资：招聘信息中给出的薪资的最高值<br>
+                最低工资：招聘信息中给出的薪资的最低值<br>
+                标准差：统计学中衡量数据波动的量<br>
+                月工资购房面积：该值越大，表示该城市住房压力越小<br>
+</p>
+
+
+            </p>
+
+
+            <p>
+                附录： <a href="__STATIC__/../lifeprice.html">2016年各省份城市平均生活水平</a>
+
+            </p>
+
+
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            //配置
+            var config = {
+                vx: 4,	//小球x轴速度,正为右，负为左
+                vy: 4,	//小球y轴速度
+                height: 2,	//小球高宽，其实为正方形，所以不宜太大
+                width: 2,
+                count: 200,		//点个数
+                color: "121, 162, 185", 	//点颜色
+                stroke: "130,255,255", 		//线条颜色
+                dist: 6000, 	//点吸附距离
+                e_dist: 20000, 	//鼠标吸附加速距离
+                max_conn: 10 	//点到点最大连接数
+            }
+
+            //调用
+            CanvasParticle(config);
+        }
+
+
+        $("#mydiv").height((    $(window).height() -50 )    );
+
+    </script>
+
+
+
+</div>
+</body>
+</html>
