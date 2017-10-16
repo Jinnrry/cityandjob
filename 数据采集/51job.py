@@ -15,7 +15,7 @@ class JobSpider():
         self.conn = pymysql.connect(host="localhost",
                                     port=3306,
                                     user="root",
-                                    passwd="00000000",
+                                    passwd="0000000",
                                     db="51job",
                                     charset="utf8")
         self.cur = self.conn.cursor()
@@ -40,15 +40,22 @@ class JobSpider():
 
             for url in urls:
                 time.sleep(3)
-                print("当前第", num, "页")
+                #print("当前第", num, "页")
                 num += 1
                 # print("当前网址",url)
                 # print("获取网页数据.....")
-                r = requests.get(url, headers=self.headers).content.decode('gbk')
+                try:
+                    page=requests.get(url, headers=self.headers).content
+                    r = page.decode('gbk')
+                except Exception as e:
+                    print(e)
+                    print(page)
+
                 # print("获取网页数据成功，解析中......")
                 bs = BeautifulSoup(r, 'lxml').find("div", class_="dw_table").find_all("div", class_="el")
 
                 if len(list(bs)) == 1:
+                    print("抓取页数：",num)
                     break;
                 for b in bs:
                     try:
@@ -70,8 +77,8 @@ class JobSpider():
                             elif salary.index("万/年"):
                                 salary_max *= 10000 / 12;
                                 salary_min *= 10000 / 12;
-                        self.insert_into_db(post, locate, salary_max, salary_min, "all", href, lo, num - 1)
-
+                        if salary_max>1000 and salary_min>500 :
+                            self.insert_into_db(post, locate, salary_max, salary_min, "all", href, lo, num - 1)
                     except Exception:
                         pass
 
@@ -85,9 +92,12 @@ class JobSpider():
             self.cur.execute(sql)
             self.conn.commit()
         except Exception as e:
-            print("error:", e)
+            #print("error:", e)
+            pass
 
 
 if __name__ == "__main__":
     spider = JobSpider()
-    spider.job_spider()
+    for i in range(99):
+        print("主循环，第",i,"次")
+        spider.job_spider()
